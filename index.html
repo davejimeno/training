@@ -14,7 +14,7 @@
     
     <div class="container-input">
         <div>Enter the number of Inputs</div>
-        <input id="input-iterate"  type="number" min="1" max="300">
+        <input id="input-iterate" >
         <button onclick="getInputFieldNumber()">GO</button></div>
     <p id="show-value"></p>
     <section class="element-container" id="container">
@@ -26,12 +26,13 @@
 </body>
 <script>
     const wrapper = document.getElementById("wrapper");
+    const inputCount = document.getElementById("input-iterate");
+
 
     function getInputFieldNumber() {
-        let inputCount = document.getElementById("input-iterate").value;
-        console.log(inputCount);
+        console.log(inputCount.value);
 
-        fetchNamesJSON(inputCount);
+        fetchNamesJSON(inputCount.value);
     }
 
     async function fetchNamesJSON(value) {
@@ -45,10 +46,8 @@
 
 
         } catch (error) {
-            
-            showValue.innerText = "Invalid Amount!";
-            
-
+            showValue.innerText = "Something went wrong!";
+        
         }
 
     }
@@ -75,8 +74,8 @@
         } */
         wrapper.innerHTML = '';
 
-
-        names.forEach(function(name) {     
+        if( inputCount.value <= 100 || inputCount.value > 0 || typeof inputCount.value === number ) {
+            names.forEach(function(name) {     
                 let idGenerate = 0;
                 let containerInner = document.createElement("div");
                 containerInner.className= "element-container-inner--inline";
@@ -101,6 +100,12 @@
                 containerInner.appendChild(innerDiv);
                 containerOuter.appendChild(containerInner);
                 })
+        }
+        else {
+            showValue.innerText = "Invalid Amount!";
+
+        }
+        
                 
         mainContainer.appendChild(containerOuter);
         observeChanges();
