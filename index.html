@@ -14,7 +14,7 @@
     
     <div class="container-input">
         <div>Enter the number of Inputs</div>
-        <input id="input-iterate"  type="number" min="1" max="100">
+        <input id="input-iterate"  type="number" min="1" max="300">
         <button onclick="getInputFieldNumber()">GO</button></div>
     <p id="show-value"></p>
     <section class="element-container" id="container">
@@ -33,14 +33,19 @@
     }
 
     async function fetchNamesJSON(value) {
-        console.log(value);
+        const showValue = document.getElementById('show-value');
+        showValue.innerText = " ";
+
+        try {
             const response = await fetch('https://random-data-api.com/api/users/random_user?size=' + value);
             const names = await response.json();
-           // return names;
-
-            console.log(names);
             renderInput(names);
+
+        } catch (error) {
+            
+            showValue.innerText = "Invalid Amount!";
         }
+    }
 
     function renderInput(names) {
 
@@ -55,8 +60,15 @@
         const showValue = document.getElementById('show-value');
             showValue.innerText = "";
 
-        if(Object.keys(names).length > 0) {
-            names.forEach(function(name) {     
+       /*  if(Object.keys(names).length > 0) {
+  
+        }
+        else {
+            const showValue = document.getElementById('show-value');
+            showValue.innerText = "Invalid Amount";
+        } */
+
+        names.forEach(function(name) {     
                 let idGenerate = 0;
                 let containerInner = document.createElement("div");
                 containerInner.className= "element-container-inner--inline";
@@ -81,11 +93,7 @@
                 containerInner.appendChild(innerDiv);
                 containerOuter.appendChild(containerInner);
                 })
-        }
-        else {
-            const showValue = document.getElementById('show-value');
-            showValue.innerText = "Invalid Amount";
-        }
+                
         mainContainer.appendChild(containerOuter);
         observeChanges();
     };
