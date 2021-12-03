@@ -25,6 +25,8 @@
     
 </body>
 <script>
+    const wrapper = document.getElementById("wrapper");
+
     function getInputFieldNumber() {
         let inputCount = document.getElementById("input-iterate").value;
         console.log(inputCount);
@@ -41,10 +43,14 @@
             const names = await response.json();
             renderInput(names);
 
+
         } catch (error) {
             
             showValue.innerText = "Invalid Amount!";
+            
+
         }
+
     }
 
     function renderInput(names) {
@@ -67,6 +73,8 @@
             const showValue = document.getElementById('show-value');
             showValue.innerText = "Invalid Amount";
         } */
+        wrapper.innerHTML = '';
+
 
         names.forEach(function(name) {     
                 let idGenerate = 0;
