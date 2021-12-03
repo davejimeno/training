@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
+
+    <title>material rip</title>
+</head>
+<body>
+    <h1 class="page-header">Material Elements</h1>
+    <div class="container-input"><input id="input-iterate" placeholder="Enter the number of Inputs"><button onclick="getInputFieldNumber()">GO</button></div>
+    <p id="show-value"></p>
+    <section class="element-container" id="container">
+        <div class="element-container-inner" id="wrapper">
+
+        </div>
+    </section>
+    
+</body>
+<script>
+    function getInputFieldNumber() {
+        let inputCount = document.getElementById("input-iterate").value;
+        console.log(inputCount);
+
+        fetchNamesJSON(inputCount);
+    }
+
+    async function fetchNamesJSON(value) {
+        console.log(value);
+            const response = await fetch('https://random-data-api.com/api/users/random_user?size=' + value);
+            const names = await response.json();
+           // return names;
+
+            console.log(names);
+            renderInput(names);
+        }
+
+    function renderInput(names) {
+        const fields = [ 'First Name', 'Last Name', 'Address Line 1', 'Address Line 2', 'Street', 'City/Town', 'Zip Code'];
+        let mainContainer = document.getElementById("container");
+        let containerOuter = document.getElementById("wrapper");
+
+
+        console.log(names, Object.keys(names).length);
+
+        let fragment = document.createDocumentFragment();
+
+        const showValue = document.getElementById('show-value');
+            showValue.innerText = "";
+
+        if(Object.keys(names).length > 0) {
+            names.forEach(function(name) {     
+                let idGenerate = 0;
+                let containerInner = document.createElement("div");
+                containerInner.className= "element-container-inner--inline";
+
+                let innerDiv = document.createElement("div");
+                innerDiv.className = "element-container--ripple-input";
+
+                let input = document.createElement("input");
+                input.className = "text-input"; 
+                input.name = name.first_name;
+                input.required = "required";
+                input.setAttribute('id', name.first_name.slice(0, 3) + Math.floor(Math.random() * 100));
+
+                let rippleLine = document.createElement("div");
+                rippleLine.className = "ripple-line";
+
+                let labelFor = document.createElement("label");
+                labelFor.innerText = name.first_name;
+
+                fragment.append(input, rippleLine, labelFor);
+                innerDiv.appendChild(fragment);
+                containerInner.appendChild(innerDiv);
+                containerOuter.appendChild(containerInner);
+                })
+        }
+        else {
+            const showValue = document.getElementById('show-value');
+            showValue.innerText = "Invalid Amount";
+        }
+       
+
+        mainContainer.appendChild(containerOuter);
+
+
+    };
+
+    function debounce(func, timeout = 1000){
+        let timer;
+        console.log(func);
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        };
+        };
+    
+    
+    const processChange = debounce((value) => checkActivity(value));
+
+
+    function checkActivity(event) {
+        console.log(event);
+        const showValue = document.getElementById('show-value');
+        showValue.innerText += event.target.id;
+    };
+
+    // document.addEventListener('input', getValue);
+    document.querySelectorAll('.text-input').forEach(item => {
+        item.addEventListener('input', processChange)
+    });
+
+</script>
+</html>
