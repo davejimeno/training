@@ -11,7 +11,11 @@
 </head>
 <body>
     <h1 class="page-header">Material Elements</h1>
-    <div class="container-input"><input id="input-iterate" placeholder="Enter the number of Inputs"><button onclick="getInputFieldNumber()">GO</button></div>
+    
+    <div class="container-input">
+        <div>Enter the number of Inputs</div>
+        <input id="input-iterate"  type="number" min="1" max="100">
+        <button onclick="getInputFieldNumber()">GO</button></div>
     <p id="show-value"></p>
     <section class="element-container" id="container">
         <div class="element-container-inner" id="wrapper">
@@ -39,7 +43,7 @@
         }
 
     function renderInput(names) {
-        const fields = [ 'First Name', 'Last Name', 'Address Line 1', 'Address Line 2', 'Street', 'City/Town', 'Zip Code'];
+
         let mainContainer = document.getElementById("container");
         let containerOuter = document.getElementById("wrapper");
 
@@ -82,12 +86,17 @@
             const showValue = document.getElementById('show-value');
             showValue.innerText = "Invalid Amount";
         }
-       
-
         mainContainer.appendChild(containerOuter);
-
-
+        observeChanges();
     };
+
+    function observeChanges() {
+        document.querySelectorAll('.text-input').forEach(item => {
+        item.addEventListener('input', processChange)
+        });
+     };
+
+
 
     function debounce(func, timeout = 1000){
         let timer;
@@ -103,15 +112,15 @@
 
 
     function checkActivity(event) {
-        console.log(event);
+        console.log(event.target.id);
         const showValue = document.getElementById('show-value');
-        showValue.innerText += event.target.id;
+        let arrayOfTriggers = [];
+        arrayOfTriggers.push(event.target.id);
+        showValue.innerText += arrayOfTriggers;
     };
 
-    // document.addEventListener('input', getValue);
-    document.querySelectorAll('.text-input').forEach(item => {
-        item.addEventListener('input', processChange)
-    });
+   // observeChanges();
+
 
 </script>
 </html>

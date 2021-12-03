@@ -16,10 +16,16 @@ background-color: #ededed;
     text-align: center;
 }
 
+.container-input button {
+    height: 30px;
+
+}
+
 #input-iterate {
-    width: 200px;
-    height: 40px;
+    width: auto;
+    height: 30px;
     margin-right: 5px;
+    padding: 0;
 }
 
 .element-container {
