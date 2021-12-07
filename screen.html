@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
+
+    <title>Document</title>
+</head>
+<body>
+    <header class="screen-header">
+        <nav class="screen-nav">
+            <ul class="menu-list">
+                <a>Home</a>
+                <a>Garden</a>
+                <a>Kitchen</a>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <form action="https://www.google.com/search">
+            <input type="text" name="q">
+            <button>Search in Googles</button>
+        </form>
+        <form action=" https://api.tvmaze.com/singlesearch/shows">
+            <input type="text" name="q">
+            <button>Search in TV Maze</button>
+        </form>
+    </section>
+    <section class="selections">
+        <form action="/size">
+            <input type="checkbox" name="terms" id="agree">
+            <label for="agree">I accept the terms and conditions.</label>
+            <p>
+                <input type="radio" name="size" id="xs" value="xs">
+                <label for="xs">XS</label>
+                <input type="radio" name="size" id="s" value="s">
+                <label for="s">S</label>
+                <input type="radio" name="size" id="m" value="m">
+                <label for="m">M</label>
+            </p>
+            <p>
+                <label for="pet-select">Choose a pet:</label>
+
+                <select name="pets" id="pet-select">
+                    <option value="">--Please choose an option--</option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="hamster">Hamster</option>
+                    <option value="parrot">Parrot</option>
+                    <option value="spider">Spider</option>
+                    <option value="goldfish">Goldfish</option>
+                </select>
+
+            </p>
+            <button>Confirm</button>
+        </form>
+
+    </section>
+</body>
+</html>
