@@ -17,7 +17,7 @@
         <input id="input-iterate" >
         <button onclick="getInputFieldNumber()">GO</button></div>
     <p id="show-value"></p>
-    <section class="element-container" id="container">
+    <section class="element-container" id="container">  
         <div class="element-container-inner" id="wrapper">
 
         </div>
@@ -41,13 +41,9 @@
             const response = await fetch('https://random-data-api.com/api/users/random_user?size=' + value);
             const names = await response.json();
             renderInput(names);
-
-
         } catch (error) {
             showValue.innerText = "Something went wrong!";
-        
         }
-
     }
 
     function renderInput(names) {
@@ -63,13 +59,6 @@
         const showValue = document.getElementById('show-value');
             showValue.innerText = "";
 
-       /*  if(Object.keys(names).length > 0) {
-  
-        }
-        else {
-            const showValue = document.getElementById('show-value');
-            showValue.innerText = "Invalid Amount";
-        } */
         wrapper.innerHTML = '';
 
         if( inputCount.value <= 100 || inputCount.value > 0 || typeof inputCount.value === number ) {
