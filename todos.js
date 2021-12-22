@@ -26,3 +26,14 @@ while( input !== 'quit' && input !== 'q') {
 
 }
 console.log('thanks for quitting!');
+
+//methods
+const mathFunk = {
+    myPi: 3.13159,
+    square(num) {
+        return num * num;
+    },
+    cube(num) {
+        return num ** 3;
+    }
+}

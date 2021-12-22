@@ -1,3 +1,38 @@
+const seatMates = [
+    [ 'doug', 'pugh', 'arf'],
+    [ 'pulp', 'sudho', 'gibraltarf'],
+    [ 'fartface', 'bido', 'hulf', 'mustardlegs'],
+]
+
+const movies = [
+    {
+        title: 'The Pianist',
+        score: 90,
+        year: 2011
+    },
+    {
+        title: 'Harold and Kumar White Castle',
+        score: 30,
+        year: 2010
+    },
+    {
+        title: 'Eternals',
+        score: 93,
+        year: 2021
+    },
+    {
+        title: 'Night Crawler',
+        score: 88,
+        year: 2014
+    },
+    {
+        title: 'Meet the Spartans',
+        score: 3,
+        year: 2008
+    }
+]
+
+
 function checkValue() {
     console.log('hi');
     const typePassword = document.getElementById("password-check");
@@ -37,13 +72,10 @@ function generateNames() {
     }
 }
 
+
 function generateNamesForOf() {
     const pForLoop = document.getElementById("for-of-array");
-    const seatMates = [
-        [ 'doug', 'pugh', 'arf'],
-        [ 'pulp', 'sudho', 'gibraltarf'],
-        [ 'fartface', 'bido', 'hulf', 'mustardlegs'],
-    ]
+   
     for (let [index, row] of seatMates.entries()) {
         pForLoop.innerHTML += `Row# ${index + 1}`;
         for(let dog of row) {
@@ -54,3 +86,14 @@ function generateNamesForOf() {
     
     }
 }
+
+// arrow function + filter + map
+function fetchMovies() {
+    console.log(movies.filter(m => m.score > 80).map(m => m.title));
+    
+}
+
+document.querySelector('.composed-button').addEventListener('click',function(e) {
+    console.log(e.composed);
+    console.log(e.composedPath());
+  });

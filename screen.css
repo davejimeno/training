@@ -1,0 +1,21 @@
+/* screen html */
+
+.screen-header {
+    width: 100%;
+    height: 40px;
+    position: sticky;
+    background-color: #7786c2b6;
+    top: 10px;
+}
+
+.screen-nav {
+    width: 40%;
+}
+
+.menu-list {
+    text-decoration: none;
+}
+
+.selections {
+    height: 2000px;
+}
