@@ -5,7 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
     <style>
+        body {
+            transition: 1s background-color;
+        }
+        .container {
+            margin-top: 5%;
+        }
         .is-winner {
             color:aquamarine;
         }
@@ -16,19 +26,46 @@
     </style>
 </head>
 <body>
-    <h1><span id="scorePlayer1">0</span> to <span id="scorePlayer2">0</span></h1>
-    <select name="selectup" id="uptoScore">
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-    </select>
-    <button id="buttonPlayer1">+1 Player One</button>
-    <button id="buttonPlayer2">+1 Player Two</button>
-    <button id="buttonReset">Reset Game</button>
+    <h1></h1>
+   <div class="container">
+       <div class="columns">
+           <div class="column is-half is-offset-one-quarter">
+            <div class="card">
+                <div class="card-image">
+            
+                </div>
+                <div class="card-content">
+                  <div class="media">
+            
+                    <div class="media-content">
+                      <h1 class="is-size-1"><span id="scorePlayer1">0</span> to <span id="scorePlayer2">0</span></h1>
+                    </div>
+                  </div>
+              
+                  <div class="content select is-rounded">
+                    <select name="selectup" id="uptoScore" class="">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                  </div>
+                  <div class="card-footer content">
+                    <button id="buttonPlayer1" class="button card-footer-item">+1 Player One</button>
+                    <button id="buttonPlayer2" class="button card-footer-item">+1 Player Two</button>
+                    <button id="buttonReset" class="button card-footer-item">Reset Game</button>
+                  </div>
+                </div>
+              </div>
+           </div>
+       </div>
+   </div>
 
+
+
+   
     <script src="scorekeeper.js"></script>
 
 </body>
